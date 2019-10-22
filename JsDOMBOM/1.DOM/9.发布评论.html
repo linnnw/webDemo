@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        li {
+            width: 250px;
+            height: 20px;
+            background-color: aqua;
+            margin-bottom: 10px;
+        }
+
+        li a {
+            float: right;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <button>发表</button>
+
+    <ul></ul>
+</div>
+
+<script>
+    var text = document.querySelector('textarea');
+    var btn = document.querySelector('button');
+    var ul = document.querySelector('ul');
+
+    btn.onclick = function () {
+        if (text.value == '') {
+            alert('输入有误')
+            return false;
+        } else {
+            var li = document.createElement('li');
+            li.innerHTML = text.value + "<a href='javascript:;'>删除</a>";
+            // ul.appendChild(li);     往最后一个li后面添加li
+            ul.insertBefore(li, ul.children[0]);    /*往某个li前面添加li*/
+            var as = document.querySelectorAll('a');
+            for (var i = 0; i < as.length; i++) {
+                as[i].onclick = function () {
+                    ul.removeChild(this.parentNode);
+                }
+            }
+        }
+
+    }
+
+
+</script>
+</body>
+</html>

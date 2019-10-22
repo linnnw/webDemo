@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var arr = [1,2,3];
+        var len = arr.push(4);  /*添加4到数组末尾并返回数组长速度*/
+        console.log(len);   /*len等于4，数组长度4*/
+        console.log(arr);
+
+        arr.unshift('0');  /*在数组最前面添加 返回数组长度*/
+        console.log(arr);
+        console.log(Array.isArray(arr));    /*查看arr是否为数组*/
+
+
+        arr.pop();      /*删除最后一个数组*/
+        arr.shift();    /*删除第一个数组*/
+        console.log(arr);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

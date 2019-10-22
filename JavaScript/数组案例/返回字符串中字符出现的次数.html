@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var str = 'abcoefoxyozzopp';
+        var obj = {
+
+        };   /*用对象存次数*/
+        for (var i = 0; i < str.length; i++) {
+            if (obj[str.charAt(i)]) {
+                obj[str.charAt(i)]++;
+            }else {
+                obj[str.charAt(i)] = 1;
+            }
+        }
+        console.log(obj)
+        var max = 0;
+        var ch = '';
+        for (var k in obj) {
+
+            if (obj[k] > max) {
+                max = obj[k]
+                ch = k;
+            }
+        }
+        console.log(max)
+        console.log('出现最多的是'+ ch + '一共出现'+max+'次');
+    </script>
+</head>
+<body>
+
+</body>
+</html>

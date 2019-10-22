@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue-2.4.0.js"></script>
+    <link rel="stylesheet" href="css/animate.css">
+</head>
+
+<body>
+    <div id="app">
+        <button @click='flag=!flag'>动画</button>
+
+
+        <transition enter-active-class='flipInX' leave-active-class='bounceln'>     <!-- https://daneden.github.io/animate.css/这个网站查看动画效果写入名字 -->
+            <p v-if='flag' class="animated">这是一个动画</p>    <!-- 第三方css做动画 class定义为animated -->
+        </transition>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                flag: false
+            }
+        })
+    </script>
+</body>
+
+</html>

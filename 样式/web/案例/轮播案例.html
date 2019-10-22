@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+        }
+        nav {
+            width: 882px;
+            height: 86px;
+            border: 1px solid red;
+            margin: 120px auto;
+            overflow: hidden;
+        }
+        nav ul {
+            width: 200%;    /*宽度设置为父盒子宽度的2倍*/
+            animation: go 5s linear infinite;   /*动画效果 linear表示匀速运动 infinite无限循环*/
+        }
+        nav li {
+            float: left;
+        }
+        @keyframes go {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-882px);     /* 往左运动*/
+            }
+        }
+        nav:hover ul {
+            animation-play-state: paused;   /*鼠标经过暂停动画*/
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <ul>
+        <li><img src="../../images/nav1.jpg" alt=""></li>
+        <li><img src="../../images/nav2.jpg" alt=""></li>
+        <li><img src="../../images/nav3.jpg" alt=""></li>
+        <li><img src="../../images/nav4.jpg" alt=""></li>
+        <li><img src="../../images/nav5.jpg" alt=""></li>
+        <li><img src="../../images/nav6.jpg" alt=""></li>
+        <li><img src="../../images/nav7.jpg" alt=""></li>
+
+        <li><img src="../../images/nav1.jpg" alt=""></li>
+        <li><img src="../../images/nav2.jpg" alt=""></li>
+        <li><img src="../../images/nav3.jpg" alt=""></li>
+        <li><img src="../../images/nav4.jpg" alt=""></li>
+        <li><img src="../../images/nav5.jpg" alt=""></li>
+        <li><img src="../../images/nav6.jpg" alt=""></li>
+        <li><img src="../../images/nav7.jpg" alt=""></li>
+    </ul>
+</nav>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/vue-2.4.0.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <counter></counter>
+        <hr>
+        <counter></counter>
+        <hr>
+        <counter></counter>
+    </div>
+
+
+    <template id="tmpl">
+        <div>
+            <input type="button" value="+1" @click="increment">
+            <h3>{{count}}</h3>
+        </div>
+    </template>
+
+    <script>
+        var dataObj = { count: 0 }
+
+        // 这是一个计数器的组件, 身上有个按钮,每当点击按钮,让 data 中的 count 值 +1
+        Vue.component('counter', {
+            template: '#tmpl',
+            data: function () {
+                // return dataObj
+                return { count: 0 }     /* 如果组件返回的是上面的dataObj那么多个组件就会共享一个对象会出现点击一个按钮多个加1的情况 */
+            },
+            methods: {    /* 组件中的方法 */
+                increment() {
+                    this.count++
+                }
+            }
+        })
+
+        // 创建 Vue 实例，得到 ViewModel
+        var vm = new Vue({
+            el: '#app',
+            data: {},
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>

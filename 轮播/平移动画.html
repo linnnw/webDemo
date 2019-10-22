@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        nav {
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+            position: relative;
+            margin-left: 300px;
+            margin-top: 200px;
+        }
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+            position: absolute;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div></div>
+    </nav>
+    <button class="btn5">500</button>
+    <button class="btn8">800</button>
+    <script>
+        var div = document.querySelector('div');
+        var btn5 = document.querySelector('.btn5');
+        var btn8 = document.querySelector('.btn8');
+
+        btn5.addEventListener('click',function () {
+            animation(div,500);
+        })
+        btn8.addEventListener('click',function () {
+            animation(div,800,function () {
+                div.style.backgroundColor = 'red';
+            });
+        })
+
+        function fn() {
+            div.style.backgroundColor = 'red';
+        };
+        function animation(obj,target,callback) {
+            clearInterval(obj.timer);
+            // var step = obj.offsetLeft;
+            obj.timer = setInterval(function () {
+                var step = ((target-obj.offsetLeft)/10);
+                // console.log('before', step);
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                // console.log('after', step);
+
+                // console.log(step);
+                obj.style.left = obj.offsetLeft+step+'px';
+                // console.log(`div: ${div} target: ${target}, offsetleft: ${obj.offsetLeft} step: ${step}, target: ${target}`);
+                if (obj.offsetLeft+step == target) {
+                    clearInterval(obj.timer);
+                    callback && callback();
+
+                }
+            },15)
+        }
+    </script>
+</body>
+</html>

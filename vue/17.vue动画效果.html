@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue-2.4.0.js"></script>
+</head>
+
+<style>
+    .v-enter,
+    .v-leave-to {
+      opacity: 0;
+      transform: translateX(150px);
+    }
+
+    .v-enter-active,
+    .v-leave-active{
+      transition: all 0.8s ease;
+    }
+
+
+    .my-enter,
+    .my-leave-to {      /* 前缀是自己定义的名字 */
+      opacity: 0;
+      transform: translateY(150px);
+    }
+
+    .my-enter-active,
+    .my-leave-active{
+      transition: all 0.8s ease;
+    }
+</style>
+<body>
+    <div id="app">
+            <button @click='flag=!flag'>动画</button>
+        <transition>    <!-- 需要做动画的标签放在transition里面 -->
+            <p v-if='flag'>动画效果</p>
+        </transition>
+
+        <transition name='my'>    <!-- name定义名字 -->
+            <p v-if='flag'>动画效果</p>
+        </transition>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                flag: false
+            }
+        })
+    </script>
+</body>
+
+</html>

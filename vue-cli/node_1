@@ -1,0 +1,32 @@
+脚手架安装需要安装node和webpack
+
+脚手架需要安装   脚手架3安装  npm install -g @vue/cli
+
+要用脚手架2 要拉取2的模板  npm install @vue/cli-init -g
+
+脚手架2初始化项目的指令是   vue init webpack 项目名
+
+脚手架3初始化项目的命令是  vue create 项目名
+
+
+脚手架2创建过程：{
+	1.Project name:  项目的名字,
+	2.Project description: 项目的描述,
+	3.Author: 作者,
+	4.选择安装runtime-only 还是runtime-compiler
+	5.是否安装vue-router
+	6.是否安装eslink   eslink是限制代码的规范如果代码写不规范会被检测出来
+	7.要不要单元测试  No
+	8.e2e(end to end) 端到端测试 No
+	9.用npm还是yarn来管理项目   npm	
+}
+脚手架3创建过程: {
+	1.选择配置： 选择Manually手动配置
+	2.配置文件是否放package.json  选择第一个in dedicated config files
+	3.是否保存刚才选择的配置 如果选是就可以起个配置名字
+	4.选择npm还是yarn  
+}
+
+vue ui 可以看图形化管理界面
+
+网络请求 axios  npm install axios --save

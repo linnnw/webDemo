@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .sidebar {
+            width: 35px;
+            height: 35px;
+            background-color: aqua;
+            position: absolute;
+            left: 0;
+            top: 200px;
+            line-height: 35px;
+            text-align: center;
+        }
+        .con {
+            width: 200px;
+            height: 35px;
+            background-color: aqua;
+            position: absolute;
+            left: -165px;
+            top: 200px;
+            text-align: right;
+            line-height: 35px;
+
+        }
+    </style>
+    <script src="../js/animate.js"></script>
+</head>
+<body>
+<div class="con">问题反馈</div>
+<div class="sidebar">-></div>
+
+<script>
+    var sideBar = document.querySelector('.sidebar');
+    var con = document.querySelector('.con');
+    sideBar.addEventListener('mouseover',function () {
+        animation(con,0,function () {
+            sideBar.innerHTML = '<-';
+        })
+    })
+    sideBar.addEventListener('mouseout',function () {
+        animation(con,-165,function () {
+            sideBar.innerHTML = '->';
+        })
+    })
+</script>
+</body>
+</html>

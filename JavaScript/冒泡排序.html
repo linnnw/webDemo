@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var str = [5,4,3,2,1];
+        for (var i = 0; i < str.length; i++) {
+            for (var j = 0; j < str.length - i; j++) {
+                if (str[j] > str[j+1]) {    /*如果第一个值大于第二个值就交换位置*/
+                    var temp = str[j];
+                    str[j] = str[j+1];
+                    str[j+1] = temp;
+                }
+            }
+        }
+        console.log(str);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

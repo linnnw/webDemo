@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 200px;
+            /*height: 127px;*/
+            position: relative;
+            margin: 350px 680px;
+        }
+        div img {
+            width: 200px;
+            height: 127px;
+            position: absolute;
+            overflow: hidden;       /*隐藏多余*/
+            transition: all .5s;    /*过度*/
+            transform-origin: top right;    /*角度为右上角*/
+        }
+        div:hover img:nth-child(1) {
+            transform: rotate(60deg);   /*旋转60度*/
+        }
+        div:hover img:nth-child(2) {
+            transform: rotate(120deg);  /*旋转120度*/
+        }
+        div:hover img:nth-child(3) {
+            transform: rotate(180deg);
+        }
+        div:hover img:nth-child(4) {
+            transform: rotate(240deg);
+        }
+        div:hover img:nth-child(5) {
+            transform: rotate(300deg);
+        }
+        div:hover img:nth-child(6) {
+            transform: rotate(360deg);
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="../images/6.jpg" width="200" alt="">
+        <img src="../images/5.jpg" width="200" alt="">
+        <img src="../images/4.jpg" width="200" alt="">
+        <img src="../images/3.jpg" width="200" alt="">
+        <img src="../images/2.jpg" width="200" alt="">
+        <img src="../images/1.jpg" width="200" alt="">
+
+    </div>
+</body>
+</html>

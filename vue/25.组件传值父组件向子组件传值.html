@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue-2.4.0.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <com1 v-bind:parentmsg='msg'></com1>    <!-- 1.调用父组件的数据先用v:bind绑定把数据传给自定义属性 -->
+    </div>
+
+
+    <template id="com1">
+        <div>
+            <h1>123==={{ parentmsg }}</h1>  <!-- 3.组件可以再props内去数据，父组件的数据不建议修改parentmsg不能修改 -->
+        </div>
+    </template>
+
+    <script>
+
+       
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: '这是父组件的数据'
+            },
+            methods: {},
+            components: ({
+                com1:{
+                    template: '#com1',
+                    props: ['parentmsg']    /* 2.传给自定义属性后组件下有个props数组接收 */
+                } 
+            })
+        })
+    </script>
+</body>
+
+</html>

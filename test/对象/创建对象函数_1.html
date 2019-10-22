@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var obj = {
+            uname: '刘德华',
+            age: 18,
+            skill: function () {
+                console.log('冰雨');
+            }
+        }
+
+        for (var k in obj) {
+            console.log(obj[k]);    /*for in 循环 用于遍历对象属性和方法*/
+        }
+
+        function Star(uname,age,skill) {
+            this.name = uname;
+            this.age = age;
+            this.skill = function (skill) {
+                console.log(skill)
+            }
+        }
+        var supper = new Star('周杰伦',38,'晴天');
+        for (var k in supper) {
+            console.log(supper[k]);
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./js/vue-2.4.0.js"></script>
+  <link rel="stylesheet" href="./css/bootstrap-3.3.7.css">
+</head>
+
+<body>
+  <div id="app">
+
+
+    <cmt-box @func='getList'></cmt-box>
+
+
+    <ul class="list-group">
+      <li class="list-group-item" v-for="item in list" :key="item.id">
+        <span class="badge">评论人： {{ item.user }}</span>
+        {{ item.content }}
+      </li>
+    </ul>
+
+
+  </div>
+
+
+  <template id="tmpl">
+    <div>
+
+      <div class="form-group">
+        <label>评论人：</label>
+        <input type="text" class="form-control" v-model='user'>
+      </div>
+
+      <div class="form-group">
+        <label>评论内容：</label>
+        <textarea class="form-control" v-model='content'></textarea>
+      </div>
+
+      <div class="form-group">
+        <input type="button" value="发表评论" class="btn btn-primary" @click='Comments'>
+      </div>
+
+    </div>
+  </template>
+
+  <script>
+
+
+    // 创建 Vue 实例，得到 ViewModel
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        list: [
+          { id: Date.now(), user: '李白', content: '天生我材必有用' },
+          { id: Date.now(), user: '江小白', content: '劝君更尽一杯酒' },
+          { id: Date.now(), user: '小马', content: '我姓马， 风吹草低见牛羊的马' }
+        ]
+      },
+      methods: {
+        getList() {    /* 获得用localStorage中的数组对象 */
+          var list = JSON.parse(localStorage.getItem('cmts') || '[]');
+          this.list = list;
+        }
+      },
+      created() {
+        this.getList();
+      },
+      components: {
+        'cmt-box': {
+          data() {
+            return {
+              user: '',
+              content: ''
+            }
+          },
+          template: '#tmpl',
+          methods: {
+            Comments() {    /* 发表评论的方法 */
+
+              /* JSON.stringify();  把对象字符化  和    JSON.parse();  把字符对象化
+              之所以要将对象字符化，是因为有些地方这会给你显示一个[Object object],但你想让他显示对象内容就要将其字符化了。
+              比如：alert(obj);   alert某对象时就会显示[Object object]。
+              但当你 alert(JSON.stringify(obj));  时，就会显示对象里面的 键值对 了。 */
+
+
+              /* 1.创建一个评论的对象 */
+              var comment = { id: Date.now(), user: this.user, content: this.content };
+              console.log(comment)
+              /* list评论的数组 */
+              /* 取到localStorage.setItem()放入cmts的字符串并装换成数组 JSON.parse把字符串转成数组如果数组是undiluted赋值位空数组[] */
+              var list = JSON.parse(localStorage.getItem('cmts') || '[]');
+              /* 把评论数组插入到评论的第一条 */
+              list.unshift(comment);
+              console.log(list);
+
+              /* 用setItem把字符串存入localStorage中   JSON.stringify(list)将一个数组变成一个字符串
+              localStorage会可以将第一次请求的数据直接存储到本地，这个相当于一个5M大小的针对于前端页面的数据库，相比于cookie可以节约带宽，但是这个却是只有在高版本的浏览器中才支持的*/
+              // 重新保存最新的 评论数据
+              localStorage.setItem('cmts', JSON.stringify(list)); /* JSON.stringify(list)是将一个数组变成一个字符串 */
+              /* 执行完清空user和content */
+              this.user = this.content = '';
+
+              /* 点击后自动刷新数据 这里调用父组件的getList方法 */
+              this.$emit('func');
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

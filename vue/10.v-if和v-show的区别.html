@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <button @click='flag=!flag'>点击</button>
+    <p v-if='flag'>我是v-if</p>     <!-- v-if是把元素删除添加达到隐藏显示效果 -->
+    <p v-show='flag'>我是v-show</p>     <!-- v-show是控制元素display:none达到隐藏显示效果  -->
+</div>
+
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                flag:true
+            }
+        })
+        </script>
+</body>
+</html>

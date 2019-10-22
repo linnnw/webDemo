@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 150px;
+            height: 150px;
+            background-color: aquamarine;
+            position: absolute;
+            left: 0;
+            top: 50px;
+        }
+
+    </style>
+</head>
+<body>
+<button class="btn500">前进500米</button>
+<button class="btn800">前进800米</button>
+<div></div>
+
+<script>
+    var div = document.querySelector('div');
+    var btn500 = document.querySelector('.btn500');
+    var btn800 = document.querySelector('.btn800');
+
+    /*var timer = setInterval(function () {
+        if (div.offsetLeft == 200){
+            clearInterval(timer)
+        }
+        div.style.left = div.offsetLeft+1+'px'
+
+    },30)   封装成函数*/
+    function animation(obj, target,callback) {      //callback回调函数
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function () {       /*div是函数所以创建.timer*/
+            step = (target - obj.offsetLeft) / 10;
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+            if (obj.offsetLeft == target) {
+                if(callback){
+                    callback();
+                }
+                clearInterval(obj.timer);
+            } else {
+                // obj.style.left = obj.offsetLeft+1+'px' 匀速前进
+                obj.style.left = obj.offsetLeft + step + 'px';
+            }
+
+        }, 15)
+    }
+
+    btn500.addEventListener('click', function () {
+        animation(div, 500);
+    })
+    btn800.addEventListener('click', function () {
+        animation(div, 800,function () {
+            div.style.backgroundColor = 'red';
+        });
+    })
+</script>
+</body>
+</html>

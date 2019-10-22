@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue-2.4.0.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <fullname></fullname> <!-- :firstnamemsg='firstname' :lastnamemsg='lastname' :fullnamemsg='fullname' -->
+    </div>
+
+    <template id="tmpl">    <!-- 在组件中完成 -->
+        <div>
+            <input type="text" v-model='firstname'>+
+            <input type="text" v-model='lastname'>=
+            <input type="text" v-model='fullname'>
+        </div>
+    </template>
+
+    <script>
+
+        var fullname = {
+            data() {
+                return {
+                    firstname: '',
+                    lastname: '',
+                    fullname: ''
+                }
+            },
+            template: '#tmpl',
+            /* props: ['firstnamemsg','lastnamemsg','fullnamemsg'] */
+            watch: {        /* watch是监听 */
+                firstname: function (newVal, oldVal) {  /* 监听firstname的变化 newval是firstname变化后的值oldval是变化前的值 */
+                    this.fullname = newVal + '-' + this.lastname;
+                },
+                lastname: function (newVal) {
+                    this.fullname = this.firstname + '-' + newVal;
+                }
+            }
+        }
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                /* firstname: '',
+                lastname: '',
+                fullname: '' */
+            },
+            components: {
+                fullname
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue-2.4.0.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <com1 @func='show'></com1>  <!-- 2.用@事件绑定父组件的方法不加括号 -->
+    </div>
+
+    <template id="tpl">
+        <div>
+            <p>子组件</p>
+            <button @click='myMethod'>点击调用父组件的方法</button> <!-- 4.调用自己的方法 -->
+        </div>
+    </template>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                dataFromSon: null
+            },
+            methods: {
+                show(data, data2) {         /* 也可以传参数子组件调用方法后可以把数据传给父组件 可以传多个 */
+                    /* console.log('--父组件的方法show--'+data+data2);    1.父组件的方法 */
+                    console.log(data);      /* 得到子组件的对象 */
+                    console.log(data2);     /* 得到子组件传过来的123 */
+                    this.dataFromSon = data;  /* 把数据赋值给父组件的data */
+                }
+            },
+            components: {
+                com1: {
+                    data() {
+                        return {
+                            obj: {
+                                id: 1,
+                                name: 'tom',
+                                age: 5
+                            }
+                        }
+                    },
+                    template: '#tpl',
+                    methods: {
+                        myMethod() {     /* 3.把父组件的方法给自己 */
+                            /* obj是子组件的数据 可以通过参数传给父组件 */
+                            this.$emit('func',this.obj,123);     /* 2.this,$emit()使用得到父组件的方法 */
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

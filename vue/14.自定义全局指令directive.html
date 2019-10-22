@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue-2.4.0.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p v-bgc='"aqua"' v-color='"red"' v-fontsize='"50px"' v-text='msg'></p>    <!-- 调用指令前面要加上v- 后面的值就是binding -->
+    </div>
+
+    <script>
+
+        Vue.directive('focus', {    /* 全局指令所有new Vue都能用 directive后面参数第一个是指令名 第二个是对象 里面有三个方法bind,inserted,updated*/
+            inserted: function (el) {
+                el.focus();
+            }
+        })
+
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: '123123'   /* v-text获取值 {{ msg }}也可以获取值 */
+            },
+            directives: {   /* 私有指令 当前vue能用 */
+                'color': {
+                    bind: function (el, binding) {
+                        // el.style.color = binding.expression;这个会获取引号
+                        el.style.color = binding.value;     /* 这个获取值 */
+                    }
+                },
+                'fontsize': function (el, binding) {    /* 简写的方式 如果不写bind或者inserted，updated会默认是bind和updated */
+                    el.style.fontSize = parseInt(binding.value) + 'px'
+                },
+                'bgc':function(el,binding){     /* 这个指令给哪个元素el就是哪个元素的dom */
+                    el.style.backgroundColor = binding.value;   
+                }
+                
+            }
+        })
+
+        /* document.querySelector('p').style.letterSpacing = '1em';  上面的directives类似与这个操作dom */
+    </script>
+</body>
+
+</html>

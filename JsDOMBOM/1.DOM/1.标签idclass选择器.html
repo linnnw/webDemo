@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="cli">点击事件</div>
+
+    <ul>
+        <li>安眠奏1</li>
+        <li>安眠奏2</li>
+        <li>安眠奏3</li>
+    </ul>
+    <script>
+        var cli = document.getElementById('cli');
+        var cli1 = document.getElementsByTagName('li');    /*返回一个数组*/
+        var cli2 = document.querySelector('#cli');
+
+        console.log(cli);   /*<div id="cli">点击事件</div>*/
+        console.log(cli1[0]);   /*取第0个数组<li>安眠奏1</li>*/
+        console.log(cli2);  /*<div id="cli">点击事件</div>*/
+        cli.onclick = function () {
+            alert('事件');
+        }
+    </script>
+</body>
+</html>

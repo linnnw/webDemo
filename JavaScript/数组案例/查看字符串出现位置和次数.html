@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var str = 'abcoefoxyozzopp';
+        var o = str.indexOf('o');
+        /*for (var i = 0; i<str.length; i++) {
+            o = str.indexOf('o',str.indexOf('o')+1);
+        } */
+        console.log(o)
+        var num = 1;
+        while (true) {
+            o = str.indexOf('o',o+1);
+            if(o == -1) {
+                break;
+            }
+            console.log(o)
+            num ++;
+        }
+        console.log('出现'+num+'次');
+        // var o = str.indexOf('o',str.indexOf('o')+1);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

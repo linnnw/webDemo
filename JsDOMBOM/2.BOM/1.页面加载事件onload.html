@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.addEventListener('load', function () {   /*页面加载完成之后执行js*/
+            var btn = document.querySelector('button');
+            btn.addEventListener('click', function () {
+                alert('点击了');
+            })
+        })
+
+        window.addEventListener('load', function () {   /*addEventListener的方法多个load事件都可以被执行*/
+            alert(33)
+        })
+
+    </script>
+</head>
+<body>
+<button>点击</button>
+</body>
+</html>

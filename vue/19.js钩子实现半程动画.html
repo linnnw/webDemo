@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue-2.4.0.js"></script>
+</head>
+
+<body>
+    <div id="app">
+            <button @click='flag=!flag'>动画</button>
+
+
+            <transition             
+            @before-enter='beforeEnter'
+            @enter='enter'
+            @after-enter='afterEnter'>      <!-- 半程动画 -->
+                <p v-if='flag' class="animated">这是一个动画</p>    
+            </transition>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                flag: false
+            },
+            methods: {
+                beforeEnter(el){    /* 动画开始之前 */
+                    el.style.transform = 'translate(0,0)'
+                },
+                enter(el,done){     /* 动画正在进行 */
+                    el.offsetLeft;  /* 没什么特殊用意不写不能触发过度效果 */
+                    el.style.transform = 'translate(150px,350px)';
+                    el.style.transition = 'all .6s ease';   /* 过度效果前面要写个el.offsetLeft没什么特殊用意 */
+                    done();  /* 立即调用afterEnter方法 不然动画会延迟消失 */
+                },
+                afterEnter(el) {    /* 动画停止之后 */
+                    this.flag = !this.flag  
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

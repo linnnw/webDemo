@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div></div>
+<script>
+    var div = document.querySelector('div')
+    console.log(location.search);
+    var parameter = location.search;    /*获得参数*/
+    parameter = parameter.substr(1);
+    var arr = parameter.split('=');     /*字符串分割成数组*/
+    console.log(arr);   /*获得数组["myName", "andy"]*/
+    div.innerHTML = arr[1]+',欢迎您';
+</script>
+</body>
+</html>

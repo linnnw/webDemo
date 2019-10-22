@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function getTimer(time) {
+            var nowTime = +new Date();  /*当前时间的毫秒数*/
+            var inputTime = +new Date(time);    /*输入的时间的毫秒数*/
+            var getSecond = (inputTime - nowTime) / 1000; /*获取剩余秒数  毫秒数除1000*/
+            var d = parseInt(getSecond/60/60/24);    /*计算天数*/
+            d = d < 10? '0'+ d: d;
+            var h = parseInt(getSecond/60/60%24);    /*计算时*/
+            h = h < 10? '0'+ h: h;
+            var m = parseInt(getSecond/60%60);       /*计算分*/
+            m = m < 10? '0'+ m: m;
+            var s = parseInt(getSecond%60);       /*计算秒*/
+            s = s < 10? '0'+ s: s;
+            return '剩余' + d + '天' + h + '小时' + m +'分'+ s + '秒';
+        }
+        console.log(getTimer('2019-8-9 0:0:0'));
+    </script>
+</head>
+<body>
+
+</body>
+</html>

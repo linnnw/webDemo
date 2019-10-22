@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function getRandom(min,max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min; //含最大值，含最小值
+        }
+        var short = getRandom(1,10);    /*1到10之间的随机数*/
+
+        while (true) {
+            var ran = prompt('猜随机数1到10');
+            if(ran > short) {
+                alert('大了');
+            } else if(ran < short) {
+                alert('小了');
+            } else {
+                alert('猜对了');
+                break;
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

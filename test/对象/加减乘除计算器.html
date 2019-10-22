@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function calc(num1,num2) {
+            return [num1+num2,num1-num2,num1*num2,num1/num2];
+        }
+
+        while (true) {
+            var res = prompt('简易计算机:'+'\n'+'1.加'+'\n'+'2.减'+'\n'+'3.乘'+'\n'+'4.除'+'\n'+'5.退出');
+            if(res == 1) {
+                var n1 = prompt('输入第一个数');
+                var n2 = prompt('输入第二个数');
+                var result = calc(parseFloat(n1),parseFloat(n2));
+                alert('结果是'+result[0]);
+            }
+            if(res == 2) {
+                var n1 = prompt('输入第一个数');
+                var n2 = prompt('输入第二个数');
+                var result = calc(parseFloat(n1),parseFloat(n2));
+                alert('结果是'+result[1]);
+            }
+            if(res == 3) {
+                var n1 = prompt('输入第一个数');
+                var n2 = prompt('输入第二个数');
+                var result = calc(parseFloat(n1),parseFloat(n2));
+                alert('结果是'+result[2]);
+            }
+            if(res == 4) {
+                var n1 = prompt('输入第一个数');
+                var n2 = prompt('输入第二个数');
+                var result = calc(parseFloat(n1),parseFloat(n2));
+                alert('结果是'+result[3]);
+            }
+            if(res == 5) {
+                break;
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

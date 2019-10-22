@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var sum = 0;
+        while(true) {
+            var operate = prompt('请输入您要的操作:'+'\n'+'1.存钱'+'\n'+'2.取钱'+'\n'+'3.显示余额'+'\n'+'4.退出');
+            if(operate == 1) {
+                var money = prompt('请输入存钱数:');
+                sum += parseFloat(money);
+                alert('您现在的余额是:'+sum);
+            }
+            if(operate == 2) {
+                var money = prompt('请输入取钱数:');
+                sum -= parseFloat(money);
+                alert('您现在的余额是:'+sum);
+            }
+            if(operate == 3) {
+                alert('您现在的余额为'+sum);
+            }
+            if(operate == 4) {
+                alert('您正在退出。。。')
+                break;
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

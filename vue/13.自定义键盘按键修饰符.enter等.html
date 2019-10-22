@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue-2.4.0.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-focus @keyup.enter='tanchu'>   <!-- 点击enter执行方法 -->
+    </div>
+    
+    <script>
+
+        Vue.directive('focus',{
+            inserted:function(el){
+                el.focus();
+            }
+        })
+
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            methods: {
+                tanchu: function(){
+                    alert(123)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

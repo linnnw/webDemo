@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .w {
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        .sidebar {
+            position: absolute;
+            width: 50px;
+            height: 170px;
+            background-color: pink;
+            right: 301px;
+            top: 330px;
+        }
+
+        span {
+            position: absolute;
+            bottom: 0;
+            padding-left: 8px;
+            display: none;
+        }
+
+        .header {
+            height: 200px;
+            background-color: aquamarine;
+        }
+
+        .banner {
+            height: 600px;
+            background-color: aqua;
+        }
+
+        .main {
+            height: 1200px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+<div class="sidebar">
+    <span>返回顶部</span>
+</div>
+<div class="header w"></div>
+<div class="banner w"></div>
+<div class="main w"></div>
+
+<script>
+    var sideBar = document.querySelector('.sidebar');
+    var banner = document.querySelector('.banner');
+    var main = document.querySelector('.main');
+    var span = document.querySelector('span');
+    var sideBarTop = sideBar.offsetTop;     /*侧边栏到顶部距离*/
+    var bannerTop = banner.offsetTop;       /*banner到顶部距离*/
+    var mainTop = main.offsetTop;       /*main到顶部距离*/
+    console.log(bannerTop)
+    document.addEventListener('scroll', function () {
+        // console.log(pageYOffset);
+        if (pageYOffset >= bannerTop) {
+            sideBar.style.position = 'fixed';
+            sideBar.style.top = sideBarTop - bannerTop + 'px';  /*侧边栏到顶部距离减去banner到顶部距离*/
+        } else {
+            sideBar.style.position = 'absolute';
+            sideBar.style.top = '330px';
+        }
+        if (pageYOffset >= mainTop) {
+            span.style.display = 'block';
+        } else {
+            span.style.display = 'none';
+        }
+    })
+    span.addEventListener('click',function () {
+        animation(window,0)      /*返回顶部*/
+    })
+
+
+    //动画
+    function animation(obj, target,callback) {      //callback回调函数
+
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function () {       /*div是函数所以创建.timer*/
+            var step = (target - obj.pageYOffset) / 10;
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+            if (obj.pageYOffset == target) {
+                if(callback){
+                    callback();
+                }
+                clearInterval(obj.timer);
+            }
+            // obj.style.left = obj.offsetLeft+1+'px' 匀速前进
+            window.scroll(0,obj.pageYOffset + step);
+
+
+        }, 15)
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .nav {
+            width: 200px;
+            margin: 100px auto;
+        }
+
+        .nav li {
+            float: left;
+            width: 57px;
+            height: 41px;
+            border: 1px solid red;
+            position: relative;
+        }
+
+        .nav ul {
+            position: absolute;
+            top: 41px;
+            left: 0;
+            width: 100%;
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+
+<ul class="nav">
+    <li>
+        <a href="#">123</a>
+        <ul>
+            <li>123</li>
+            <li>123</li>
+            <li>123</li>
+        </ul>
+    </li>
+    <li><a href="#">123</a>
+        <ul>
+            <li>123</li>
+            <li>123</li>
+            <li>123</li>
+        </ul>
+    </li>
+    <li>
+        <a href="#">123</a>
+        <ul>
+            <li>123</li>
+            <li>123</li>
+            <li>123</li>
+        </ul>
+    </li>
+</ul>
+<script>
+    var nav = document.querySelector('.nav');
+    var lis = nav.children;
+    for (var i = 0; i < lis.length; i++) {
+        lis[i].onmouseover = function () {
+            this.children[1].style.display = 'block';
+        }
+        lis[i].onmouseout = function () {
+            this.children[1].style.display = 'none';
+        }
+    }
+</script>
+</body>
+</html>

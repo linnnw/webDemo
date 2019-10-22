@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue-2.4.0.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <input type="text" v-model='firstname'>+
+            <input type="text" v-model='lastname'>=
+            <input type="text" v-model='fullname'>
+        </div>
+    </div>
+
+
+    <script>
+
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                firstname: '',
+                lastname: '',
+
+            },
+            computed: { /* 用来计算  里面存着函数并且要return值 可以把里面的方法当初普通data属性用*/
+                fullname: function () {   /* 直接返回firstname和lastname相拼接的值所以firstname或lastname一改变就会重新计算 */
+                    return this.firstname + '-' + this.lastname;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

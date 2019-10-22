@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 150px;
+            height: 150px;
+            background-color: aqua;
+            animation: go 3s infinite;  /*infinite表示无限循环;*/
+            /*-webkit-animation: go 5s; !* Safari 与 Chrome *!*/
+        }
+        /*@-webkit-keyframes*/
+        @keyframes go{
+            0% {
+                transform: translate3d(0,0,0);
+            }
+            25% {
+                transform: translate3d(500px,0,0);
+            }
+            50% {
+                transform: translate3d(500px,500px,0);
+            }
+            75% {
+                transform: translate3d(0,500px,0);
+            }
+            100% {
+                transform: translate3d(0,0,0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

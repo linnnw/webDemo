@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue-2.4.0.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{ msg | fil }}
+        <br>
+        {{ dat | dateFormat('yyyy-mm-dd') }} <!-- data值是这里dat param的值是这里的'yyyy-mm-dd' -->
+    </div>
+
+    <script>
+        //全局过滤器所有new Vue()都可用
+        Vue.filter('fil', function (data, para = '?') {    /* filter过滤器 第一个值显示过滤器名字 function里面的data是要过滤的msg，第二个值是参数不传值默认是？ */
+            return data.replace(/l/g, '>')   /* replace只能替换第一个值 /l/g是正则表达式替换所有的l */
+        })
+
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello world',
+                dat: new Date()
+            },
+            filters: {      /* 私有的过滤器 定义在Vue({})里面 */
+                dateFormat: function (data, param = '') {   /* 第一个参数是调用这个过滤器的数据，第二个是方法参数 */
+                    let y = data.getFullYear().toString().padStart(2,0);    /* 第一个参数是定义几个字符串 第二个参数是如果字符串个数不够前面补0 */
+                    let m = (data.getMonth() + 1).toString().padStart(2,0);
+                    let d = data.getDate().toString().padStart(2,0);
+                    /* '2'.padStart(5,0); */  //结果是"00002"   2前面补0直到字符串达到5位数
+                    if (param.toLowerCase() === 'yyyy-mm-dd') {
+                        return `${y}-${m}-${d}`; /* 如果参数是yyyy - mm - dd则返回年月日 */
+                    } else {        /* 否则返回年月日时分秒 默认是年月日时分秒 */
+                        let hh = data.getHours().toString().padStart(2,0);
+                        let mm = data.getMinutes().toString().padStart(2,0);
+                        let ss = data.getSeconds().toString().padStart(2,0);
+
+                        return `${y}-${m}-${d} ${hh}:${mm}:${ss}`;
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+        }
+        .carousel {
+            width: 720px;
+            height: 400px;
+            position: relative;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .carousel .car_ul {
+            width: 700%;
+            position: absolute;
+            left: 0;
+        }
+        li {
+            float: left;
+        }
+        img {
+            width: 720px;
+            height: 400px;
+        }
+        .carousel .btn_l,
+        .carousel .btn_r{
+            width: 20px;
+            height: 40px;
+            background-color: rgba(0,0,0,.2);
+            line-height: 40px;
+            text-align: center;
+            color: #ccc;
+            position: absolute;
+            top: 200px;
+        }
+        .carousel .btn_l {
+            left: 0;
+
+        }
+        .carousel .btn_r {
+            right: 0;
+            transform: translateY(-50%);
+        }
+        .carousel .circle {
+            width: 150px;
+            height: 15px;
+            position: absolute;
+            left: 360px;
+            bottom: 5px;
+            transform: translateX(-50%);
+        }
+        .carousel .circle li {
+            width: 15px;
+            height: 15px;
+            background-color: rgba(255,255,255,.4);
+            margin: 0 7px;
+            border-radius: 50%;
+            float: left;
+        }
+        .current {
+            background-color: #fff!important;
+        }
+    </style>
+</head>
+<body>
+<div class="carousel">
+    <ul class="car_ul">
+        <li><img src="images/01.jpg" alt=""></li>
+        <li><img src="images/02.jpg" alt=""></li>
+        <li><img src="images/03.jpg" alt=""></li>
+        <li><img src="images/04.jpg" alt=""></li>
+        <li><img src="images/05.jpg" alt=""></li>
+    </ul>
+    <div class="btn_l"><</div>
+    <div class="btn_r">></div>
+    <ul class="circle">
+
+    </ul>
+</div>
+
+
+<script>
+    var car_ul = document.querySelector('.car_ul');
+    var circle = document.querySelector('.circle');
+    var img = document.querySelector('img');
+    var btnl = document.querySelector('.btn_l');
+    var btnr = document.querySelector('.btn_r');
+    var index = 0;
+    for (var i = 0; i < car_ul.children.length; i++){
+        var li = document.createElement('li');
+        li.setAttribute('index',i);
+        circle.appendChild(li);
+        circle.children[0].className = 'current';
+        circle.children[i].addEventListener('click',function () {
+            for (var i = 0; i < circle.children.length; i++){
+                circle.children[i].className = '';
+            }
+            this.className = 'current';
+            index = this.getAttribute('index');
+            num = index;
+            circlenum = index;
+            animation(car_ul,-index*img.offsetWidth);
+
+        })
+
+    }
+    var first = car_ul.children[0].cloneNode(true);
+    car_ul.appendChild(first);
+
+
+    // 向右滑动点击事件
+    var num = 0;
+    var circlenum = 0;
+    var flag = true;        /*防止连续点击快速播放*/
+    btnr.addEventListener('click',function () {
+        if (flag) {     /*防止连续点击快速播放*/
+            flag = false;
+            if (num == car_ul.children.length -1) {
+                car_ul.style.left = '0';
+                num = 0;
+            }
+            if (circlenum == car_ul.children.length -2) {
+                circlenum = -1;
+            }
+            for (var i = 0; i < circle.children.length; i++){
+                circle.children[i].className = '';
+            }
+            circlenum++;
+            num++;
+            circle.children[circlenum].className = 'current';
+            animation(car_ul,-num*img.offsetWidth,function () {
+                flag = true;
+            });
+
+        }
+    })
+
+
+    // 向左滑动点击事件
+
+    btnl.addEventListener('click',function () {
+        if (flag) {     /*防止连续点击快速播放*/
+            flag = false;
+            if (num == 0) {
+                car_ul.style.left = -(5*img.offsetWidth)+'px';
+                num = car_ul.children.length - 1;
+            }
+            if (circlenum == 0) {
+                circlenum = car_ul.children.length - 1;
+            }
+            for (var i = 0; i < circle.children.length; i++){
+                circle.children[i].className = '';
+            }
+            circlenum--;
+            num--;
+            circle.children[circlenum].className = 'current';
+            animation(car_ul,-num*img.offsetWidth,function () {
+                flag = true;
+            });
+        }
+
+    })
+
+
+    // 自动播放
+    var timer = setInterval(function () {
+        btnr.click();
+    },2000)
+
+    car_ul.addEventListener('mouseover',function () {
+        clearInterval(timer);       /*鼠标移入停止*/
+    })
+
+    car_ul.addEventListener('mouseout',function () {
+        timer = setInterval(function () {
+            btnr.click();
+        },2000)
+    })
+
+    //动画
+    function animation(obj,target,callback) {
+        clearInterval(obj.timer);
+        // var step = obj.offsetLeft;
+        obj.timer = setInterval(function () {
+            var step = ((target-obj.offsetLeft)/10);
+            // console.log('before', step);
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+            // console.log('after', step);
+
+            // console.log(step);
+            obj.style.left = obj.offsetLeft+step+'px';
+            // console.log(`div: ${div} target: ${target}, offsetleft: ${obj.offsetLeft} step: ${step}, target: ${target}`);
+            if (obj.offsetLeft+step == target) {
+                clearInterval(obj.timer);
+                callback && callback();
+            }
+        },15)
+    }
+
+</script>
+</body>
+</html>

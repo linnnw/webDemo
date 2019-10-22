@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+            margin: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+
+    <script>
+        var div = document.querySelector('div');
+        console.log(div.offsetTop);     /*距离上边的margin值*/
+        console.log(div.offsetLeft);    /*距离左边的margin值*/
+        console.log(div.offsetWidth);   /*盒子的宽度*/
+        console.log(div.offsetHeight);  /*盒子的高度*/
+    </script>
+</body>
+</html>

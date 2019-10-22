@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            var num1 = document.getElementById("num1");
+            var num2 = document.getElementById("num2");
+            var num3 = document.getElementById("re");
+            num3.onclick = function () {
+                var s1 = parseFloat(num1.value);
+                var s2 = parseFloat(num2.value);
+                if(isNaN(s1)) {
+                    alert("输入的第一个值有误")
+                } else if(isNaN(s2)) {
+                    alert("输入的第二个值有误")
+                } else {
+                    alert(s1 + s2);
+                }
+            }
+        }
+
+    </script>
+</head>
+<body>
+<input type="text" id="num1">
+<input type="text" id="num2">
+<button id="re"></button>
+
+</body>
+</html>

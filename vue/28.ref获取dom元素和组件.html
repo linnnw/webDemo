@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue-2.4.0.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button @click='btn'>点击获取p数据</button>
+        <!-- 用ref获取这个dom元素控制台输出里面的语句 -->
+        <p ref='pDom'> 这是一个段落 </p>      <!-- ref命名为pDom下面可以在$refs中找到这个dom -->
+
+        <login ref='slogin'></login>
+    </div>
+
+    <template id="tmpl">
+        <div>
+            <p>子组件的段落</p>
+        </div>
+    </template>
+    <script>
+
+        var login = {
+            template: '#tmpl',
+            data() {
+                return {
+                    msg: '子组件data中msg数据'
+                }
+            },
+            methods: {
+                show() {
+                    console.log('子组件show方法');
+                }
+            }
+        }
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            methods: {
+                btn() {
+                    console.log(this.$refs.pDom.innerText);
+                    console.log(this.$refs.slogin.msg);  /* 得到子组件的数据 */
+                    console.log(this.$refs.slogin.show());  /* 得到子组件的方法 */
+                }
+            },
+            components: {
+                login
+            }
+
+        })
+    </script>
+</body>
+
+</html>

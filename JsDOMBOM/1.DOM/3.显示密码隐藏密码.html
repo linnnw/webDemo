@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            width: 450px;
+            height: 35px;
+            border-bottom: 1px solid #ccc;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        input {
+            width: 400px;
+            height: 35px;
+            border: 0;
+            outline: none;
+        }
+        div img {
+            width: 30px;
+            position: absolute;
+            right: 5px;
+            top: 5px;
+        }
+    </style>
+
+</head>
+<body>
+<div>
+    <input type="password">
+    <img src="../images/guan.png" alt="" >
+</div>
+
+<script>
+    var ipn = document.querySelector('input');
+    var img = document.querySelector('img');
+    var flag = 0;
+    img.onclick = function () {
+        if (flag == 0) {
+            img.src = '../images/kai.png';
+            ipn.type = 'text';
+            ++ flag;
+        }else {
+            img.src = '../images/guan.png';
+            ipn.type = 'password';
+            flag = 0;
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* new Promise((resolv, reject) => {
+            setTimeout(function(){
+                resolv('data')
+            },1000)
+        }).then(red => {
+            console.log(red,'第一层10')
+            return new Promise((resolv,reject) => {
+                resolv(red+'111')
+            })
+        }).then(res => {
+            console.log(res,'第二层10')
+        }) */
+
+        new Promise((resolve, reject) => {
+            setTimeout(function () {
+                resolve('data')
+            }, 1000)
+        }).then(red => {
+            console.log(red, '第一层10')
+            return Promise.resolve(red + '111')
+
+        }).then(res => {
+            console.log(res, '第二层10')
+            return Promise.resolve(res + '222')
+        }).then(red => {
+            console.log(red);
+
+        }).catch(err => {
+            console.log(err);
+
+        })
+
+
+        Promise.all([      /* 同时执行两个网络请求返回数组里面是结果 */
+            new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve('result1');
+                }, 2000)
+            }),
+            new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve('result2');
+                }, 1000)
+            })
+        ]).then(results => {
+            console.log(results);   /* 返回数组  (2)["result1", "result2"] */  
+
+        })
+
+    </script>
+</body>
+
+</html>

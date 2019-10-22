@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div></div>
+
+<script>
+    var div = document.querySelector('div');
+    var s = 5;
+    var timer = setInterval(fn,1000);
+
+    function fn() {
+        if (s == 0) {
+            clearInterval(timer);
+            location.href = 'http://www.baidu.com';
+        } else {
+            div.innerHTML = s+'秒后跳转到百度';
+            s--;
+        }
+    }
+</script>
+</body>
+</html>

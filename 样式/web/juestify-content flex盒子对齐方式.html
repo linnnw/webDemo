@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        section {
+            width: 1200px;
+            height: 777px;
+            border: 1px solid red;
+            margin: 100px auto;
+            display: flex;
+            /*justify-content: flex-end;  !*盒子靠右边显示 类似于float: right*!*/
+            justify-content: center;       /*盒子居中显示*/
+        }
+        div {
+            width: 300px;
+            height: 300px;
+            background-color: aqua;
+        }
+        div:nth-child(2) {
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </section>
+</body>
+</html>

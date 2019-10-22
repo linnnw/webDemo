@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        section {
+            width: 1200px;
+            height: 666px;
+            border: 1px solid red;
+            margin: 100px auto;
+            display: flex;
+            flex-flow: wrap;    /*盒子总宽度大于父盒子时换行居中显示*/
+        }
+        section div {
+            width: 300px;
+            height: 200px;
+
+        }
+        section div:nth-child(1) {
+            background-color: aqua;
+        }
+        section div:nth-child(2) {
+            background-color: skyblue;
+        }
+        section div:nth-child(3) {
+            background-color: steelblue;
+        }
+        section div:nth-child(4) {
+            background-color: cornflowerblue;
+        }
+        section div:nth-child(5) {
+            background-color: aqua;
+        }
+
+    </style>
+</head>
+<body>
+    <section>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </section>
+</body>
+</html>

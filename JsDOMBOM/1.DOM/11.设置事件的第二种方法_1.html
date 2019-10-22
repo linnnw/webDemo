@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 200px;
+            height: 30px;
+            background-color: aqua;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<div>.onclick方式</div>
+<div>addEventListener方式</div>
+
+<script>
+    var divs = document.querySelectorAll('div');
+    divs[0].onclick = function () {     /*这个方式只能执行一个事件如果下面还有这个元素的点击事件会覆盖上面的*/
+        alert('22');
+    }
+
+    divs[1].addEventListener('click',function () {  /*这个方式能执行多个事件 支持ie9以上*/
+        alert('22')
+    })
+    divs[1].addEventListener('click',function () {  /*这个方式能执行多个事件 支持ie9以上*/
+        alert('33')
+    })
+</script>
+</body>
+</html>

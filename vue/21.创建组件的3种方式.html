@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue-2.4.0.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        1.=====================
+        <mycom1></mycom1>
+        <br>
+        2.=======================
+        <mycom2></mycom2>
+        <br>
+        3.==========================
+        <mycom3></mycom3>
+        <br>
+        4.=============================
+        <self></self>
+    </div>
+
+    <!-- 第三种方式在#app外面定义标签 -->
+    <template id="tpl">
+        <div>
+            <!-- 在外部定义模板有语法提示和高亮 -->
+            <h3>直接用template元素定义的标签</h3>
+            <span>好用</span>
+        </div>
+    </template>
+
+    <!-- 私有组件 -->
+    <template id="self">
+            <div>
+                <!-- 在外部定义模板有语法提示和高亮 -->
+                <h3>私有组件定义的标签</h3>
+            </div>
+        </template>
+    <script>
+        //公用的组件在new Vue({})外面定义
+        /* 1.第一种方式定义组件start */
+        var com1 = Vue.extend({     /* 定义模板 */
+            template: '<h1>使用Vue.extend来创建组件</h1>'
+        })
+        Vue.component('mycom1', com1); /* 定义组件第一个参数是组件名字，第二个是定义的模板 */
+        /* end */
+
+        /* 2.第二种方式定义组件start */
+        /* Vue.component('mycom2',Vue.extend({      定义模板 
+            template: '<h1>直接使用component来创建组件</h1>'
+        })) */
+
+        Vue.component('mycom2', {  /* 可以直接省略Vue.extend直接写模板 */
+            template: '<div><h1>直接使用component来创建组件</h1><span>123</span></div>'    /* 这个组件只能些一个根标签如果要用到多个标签要用个父标签包起来 */
+        })
+        /* end */
+
+        /* 3.第三种方式定义组件start */
+        Vue.component('mycom3', {
+            template: '#tpl'    /* 定义一个id */
+        })
+        /* end */
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            components: {   /* 定义私有的组件自己能用 */
+                self: {     
+                    template: '#self'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

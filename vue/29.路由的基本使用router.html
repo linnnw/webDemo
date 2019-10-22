@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue-2.4.0.js"></script>
+    <script src="js/vue-router-3.0.1.js"></script>
+    <style>
+        .v-enter,
+        .v-leave-to {
+            opacity: 0;
+            transform: translateX(100px);
+        }
+
+        .v-enter-active,
+        .v-leave-active {
+            transition: all .2s ease
+        }
+
+
+        .router-link-exact-active,
+        router-link-active {            /* router-link渲染自带类 */
+            color: aqua;
+            font-size: 22px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+       <!--  <a href="#/login">登录</a>  路径前要加# 
+        <a href="#/register">注册</a> -->
+
+        <router-link to='/login'>登录</router-link>     <!-- 这个标签路径不需要加# 这个标签会渲染成a标签 -->
+        <router-link to='/register'>注册</router-link>
+
+        <transition mode='out-in'>
+            <router-view></router-view>
+        </transition>
+
+    </div>
+
+    <script>
+
+        var login = {       /* 设置component */
+            template: '<h3>登录页面</h3>'
+        }
+
+        var register = {
+            template: '<h3>注册页面</h3>'
+        }
+
+        var routerObj = new VueRouter({     /* 设置路由名为routerObj */
+            // 路由匹配规则 里面必须有path和component
+            routes: [
+                { path: '/', redirect: '/login' },   /* 重定向把跟路径定向成login页面 */
+                { path: '/login', component: login },    /* path路径要加斜杠 */
+                { path: '/register', component: register }   /* 第一个值是路径第二个是要跳转的组件 */
+            ]
+        })
+
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            router: routerObj       /* 路由绑定vue */
+        })
+    </script>
+</body>
+
+</html>

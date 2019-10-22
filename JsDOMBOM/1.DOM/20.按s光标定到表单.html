@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text">
+
+<script>
+    // 按下s键 input获得焦点
+    var ipn = document.querySelector('input');
+    document.addEventListener('keyup', function (e) {
+        if (e.keyCode == 83) {
+            ipn.focus();    /*input获得焦点*/
+        }
+    })
+</script>
+</body>
+</html>

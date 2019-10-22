@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue-2.4.0.js"></script>
+    <script src="js/vue-router-3.0.1.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+        <router-link to='/login?id=10&name=zs'>登录</router-link>   <!-- 传参id，name -->
+
+        <router-view></router-view>
+    </div>
+
+    <script>
+
+        var login = {
+            template: '<h3>登录--{{ $route.query.id }}--{{ $route.query.name }}</h3>'    /* $route.query.id获取传递的id参数name参数 */
+        }
+
+        var register = {
+            template: '<h3>注册</h3>'
+        }
+
+        var router = new VueRouter({
+            routes: [
+                {path: '/login', component: login},
+                {path: '/register', component: register}
+            ]
+        })
+        var vm = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            /* router: router */
+            router  /* 绑定 */
+        })
+    </script>
+</body>
+
+</html>

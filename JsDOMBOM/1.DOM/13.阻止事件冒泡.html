@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .father {
+            width: 220px;
+            height: 220px;
+            background-color: skyblue;
+            overflow: hidden;
+            margin: 150px auto;
+        }
+        .son {
+            margin: 35px;
+            width: 150px;
+            height: 150px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+
+    <script>
+        var father = document.querySelector('.father');
+        var son = document.querySelector('.son');
+
+        /*father.addEventListener('click',function () {
+            alert('father')
+        },true)     /!*值为true则为捕获阶段 false或不写 则为冒泡阶段*!/
+        son.addEventListener('click',function () {
+            alert('son')
+        },true)
+
+        document.addEventListener('click',function () {
+            alert('document')
+        },true)*/
+
+        father.addEventListener('click',function () {
+            alert('father')
+        })
+        son.addEventListener('click',function (e) {
+            alert('son');
+            e.stopPropagation();     /*停止冒泡*/
+        })
+
+        document.addEventListener('click',function () {
+            alert('document')
+        })
+    </script>
+</body>
+</html>

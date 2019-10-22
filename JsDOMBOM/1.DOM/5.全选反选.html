@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    全选/全不选<input type="checkbox" id="query"> <br>
+    <input type="checkbox" class="checks">
+    <input type="checkbox" class="checks">
+    <input type="checkbox" class="checks">
+    <input type="checkbox" class="checks">
+    <input type="checkbox" class="checks">
+</div>
+
+<script>
+    var query = document.getElementById('query');
+    var checks = document.getElementsByClassName('checks');
+    query.onclick = function () {
+
+        for (var i = 0; i < checks.length; i++) {
+            checks[i].checked = query.checked;
+        }
+    }
+    for (var i = 0; i < checks.length; i++) {
+        checks[i].onclick = function () {
+
+            for (var i = 0; i < checks.length; i++) {
+                var flag = true;
+                if (!checks[i].checked) {
+                    flag = false;
+                    break;
+                }
+            }
+            query.checked = flag;
+
+        }
+    }
+</script>
+</body>
+</html>

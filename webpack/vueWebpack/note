@@ -1,0 +1,24 @@
+笔记
+
+1.下载node.js
+2.安装全局webpack3.6.0版本 终端输入npm install webpack@3.6.0 -g
+3.创建项目名  结构是两个文件夹 dist和src src存放源码  dist存放打包后的代码
+4.项目需要初始化  终端输入 npm init
+5.每个项目需要自己的webpack   下载一个webpack  终端 npm install webapck@3.6.0 --save -dev
+
+css,less,img等打包到bundel.js配置看官方文档
+
+es6转es5配置babel  npm install --save-dev babel-loader@7 babel-core babel-preset-es2015
+
+下载vuejs  npm install vue --save
+
+识别vue文件要下载vue-loader  npm install vue-loader vue-template-compiler --save-dev
+vue-loader版本改成13+  npm install 更新package.json
+
+index.html打包到dist 下载插件 npm install html-webpack-plugin --save-dev
+
+把生成的bundle.js代码进行压缩使用插件 npm install uglifyjs-webpack-plugin@1.1.1 --save-dev 安装1.1.1版本
+
+本地服务器webpack-dev-server 2.9.1版本 自动转换代码到内存 npm install --save-dev webpack-dev-server@2.9.1
+
+合并插件需要下载webpack-merge  npm install webpack-merge --save-dev

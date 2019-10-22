@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li>123</li>
+    <li>123</li>
+    <li>123</li>
+</ul>
+
+<script>
+    var ul = document.querySelector('ul');
+    // this返回当前对象 e.target返回的是点击的对象
+    ul.addEventListener('click',function (e) {
+        console.log(this);      /*返回ul*/
+        console.log(e.target);  /*返回点击到的li*/
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue-2.4.0.js"></script>
+    <style>
+        .v-enter,
+        .v-leave-to {
+            opacity: 0;
+            transform: translateX(120px)
+        }
+
+        .v-enter-active,
+        .v-leave-active {
+            transition: all .3s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <a href="" @click.prevent='flag="login"'>登录</a>   <!-- 切换组件名来实线组件的切换 -->
+        <a href="" @click.prevent='flag="register"'>注册</a>    <!-- 切换组件名来实线组件的切换 -->
+
+        <transition mode='out-in'>  <!-- 用mode定义out-in或者in-out来实现动画完全出去了下一个动画才进来 -->
+            <component :is='flag'></component>  <!-- flag变量存储要使用的组件名 -->
+        </transition>
+    </div>
+
+    <template id="login">    <!-- 登录的组件 -->
+        <p>登录组件</p>
+    </template>
+    <template id="register">    <!-- 注册的组件 -->
+        <p>注册组件</p>
+    </template>
+    <script>
+
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                flag: 'login'       /* flag变量存储要使用的组件名 */
+            },
+            components: {       /* 私有组件 */
+                login: {
+                    template: '#login'      /* 登录的组件 */
+                },
+                register: {
+                    template: '#register'       /* 注册的组件 */
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .spec-img {
+            width: 450px;
+            height: 450px;
+            background: url("../images/HONOR.jpg");
+            position: relative;
+            float: left;
+            margin: 100px;
+        }
+
+        .big {
+            width: 303px;
+            height: 303px;
+            background-color: rgba(255, 150, 0, .3);
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            display: none;
+        }
+
+        .big-img {
+            width: 540px;
+            height: 540px;
+            background: url("../images/HONOR.jpg") no-repeat 0px 0px;
+            background-size: 150%;
+            float: left;
+            display: none;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+<div class="spec-img">
+    <div class="big"></div>
+</div>
+<div class="big-img">
+
+</div>
+
+<script>
+    var img = document.querySelector('.spec-img');
+    var jq = document.querySelector('.big');
+    var bimg = document.querySelector('.big-img');
+    img.addEventListener('mousemove', function (e) {
+        jq.style.display = 'block';
+        bimg.style.display = 'block';
+        var x = e.pageX - this.offsetLeft;
+        var y = e.pageY - this.offsetTop;
+        x -= jq.offsetWidth / 2;       /*303/2的值  鼠标在图片左上角位置移到中间要减去宽的一半*/
+        y -= jq.offsetHeight / 2;       /*同上*/
+        // jq.style.left = x + 'px';
+        if (x >= 147) {
+            x = 147;
+        } else if (x <= 0) {
+            x = 0;
+        }
+        // jq.style.top = y + 'px';
+        if (y >= 147) {
+            y = 147;
+        } else if (y <= 0) {
+            y = 0;
+        }
+        jq.style.top = y + 'px';
+        jq.style.left = x + 'px';
+        bimg.style.backgroundPositionX = '-' + x * 1.79 + 'px';     /*大遮挡除以小遮挡540/303 1.79*/
+        bimg.style.backgroundPositionY = '-' + y * 1.79 + 'px';
+    })
+    img.addEventListener('mouseout',function () {
+        jq.style.display = 'none';
+        bimg.style.display = 'none';
+    })
+</script>
+</body>
+</html>

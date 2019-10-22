@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        // 工资数组[1500,1200,2000,2100,1800] 把工资大于2000的值删除，剩余的放在新数组
+        var arr = [1500,1200,2000,2100,1800];
+        var newArr = [];
+        for (var i = 0; i < arr.length; i++) {
+            if(arr[i] < 2000) {
+                newArr.push(arr[i]);
+            }
+        }
+        console.log(newArr);
+
+        console.log(arr.sort(function (a,b) {
+            return a-b; /*升序排列*/
+            // return b-a; 降序排列
+        }));
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

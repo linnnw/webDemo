@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+        }
+        div {
+            width: 360px;
+            margin: 100px auto;
+        }
+        ul li {
+            width: 350px;
+            height: 35px;
+            border: 1px solid aqua;
+        }
+
+    </style>
+</head>
+<body>
+<div>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+
+<script>
+    var lis = document.querySelectorAll('li');
+    for (var i = 0; i<lis.length; i++) {
+        lis[i].onmouseover = function () {      /*onmouseover鼠标移入是的事件*/
+            this.style.backgroundColor = 'aqua';
+        }
+    }
+    for (var i = 0; i<lis.length; i++) {        /*oumouseout鼠标移出事件*/
+        lis[i].onmouseout = function () {
+            this.style.backgroundColor = '';
+        }
+    }
+
+</script>
+</body>
+</html>

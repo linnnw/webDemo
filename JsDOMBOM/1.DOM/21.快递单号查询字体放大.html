@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 188px;
+            height: 30px;
+            border: 1px solid #fff;
+            position: relative;
+            box-shadow: 0px 1px 6px rgba(0,0,0,.3);
+            font-size: 16px;
+            line-height: 30px;
+            display: none;
+        }
+        div::after {
+            content: '';
+            width: 0;
+            height: 0;
+            position: absolute;
+            left: 13px;
+            bottom: -16px;
+            border-width: 8px;
+            border-style: solid;
+            border-color: #fff transparent transparent transparent;
+        }
+        input {
+            width: 186px;
+            height: 25px;
+            position: absolute;
+            top: 49px;
+            outline: none;
+
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <input type="text">
+
+    <script>
+        var ipn = document.querySelector('input');
+        var div = document.querySelector('div');
+        ipn.onfocus = function () {
+            console.log(div.innerHTML)
+            if (div.innerHTML != ''){
+                div.style.display = 'block';
+            }
+            ipn.style.boxShadow = '0px 1px 3px rgba(0,0,0,.3)'
+
+        }
+        ipn.onblur = function () {
+            ipn.style.boxShadow = ''
+            div.style.display = 'none';
+        }
+        ipn.onkeyup = function () {
+            div.style.display = 'block';
+            div.innerHTML = ipn.value;
+            if (div.innerHTML == '') {
+                div.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

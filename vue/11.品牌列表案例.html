@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue-2.4.0.js"></script>
+    <style>
+        th,
+        td {
+            padding: 0 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <table>
+            <tbody>
+                <thead>
+                    ID: <input type="text" v-model='id'>
+                    name: <input type="text" v-model='name'>
+                    <button @click='add'>添加</button>
+                    search: <input type="text" v-model='keyWord'>
+                </thead>
+                <tr>
+                    <th>ID</th>
+                    <th>name</th>
+                    <th>operation</th>
+                </tr>
+
+                <tr v-for='item in search(keyWord)' :key='item.id'>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                    <td><a href="" @click.prevent='del(item.id)'>删除</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                id: '',
+                name: '',
+                list: [{ id: 1, name: '宝马' }, { id: 2, name: '奔驰' }],
+                keyWord: ''
+            },
+            methods: {
+                add() {
+                    if (this.id != '' && this.name != '') {
+                        this.list.push({ id: this.id, name: this.name });
+                        this.id = '';
+                        this.name = ''
+                    }
+                },
+                del(id) {
+                    this.list.filter((item, i) => {  /* es6方法 item为数组的内容，i为数组的索引值 */
+                        if (item.id == id) {
+                            this.list.splice(i, 1);     /* 删除数组从索引号i开始删除一个 */
+                        }
+                    })
+                },
+                search(keyWord) {
+                    var newList = [];
+                    this.list.filter(item => {    /* filter遍历数组每个数组是一个item */
+                        if (item.name.includes(keyWord)) {   //includes方法 调用的字符串是包含空字符串的
+                            newList.push(item)  /* includes是包含的意思如果item.name这个字符串包含了传入的keyWord就把item对象加入新的字符串 */
+                        }
+                    })
+                    return newList;
+
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

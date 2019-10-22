@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .door {
+            width: 330px;
+            height: 230px;
+            background: url("../../images/1.jpg") no-repeat -50px;
+            margin: 200px auto;
+            position: relative;
+            perspective: 1000px;    /*透视距离   1000px*/
+        }
+        .door_r,
+        .door_l {
+            height: 100%;
+            width: 50%;
+            background-color: aqua;
+            position: absolute;
+            transition: all 1s;     /*过度*/
+            box-sizing: border-box;
+
+        }
+        .door_r::after,
+        .door_l::after {
+            content: "";
+            border: 1px solid black;
+            border-radius: 50%;     /*四边弧度 50%为圆形*/
+            width: 7px;
+            height: 7px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .door_l::after {
+            right: 5px;
+        }
+        .door_r::after {
+            left: 5px;
+        }
+        .door_l {
+            left: 0;
+            border-right: 1px solid red;
+            transform-origin: left;     /*旋转点  靠左旋转*/
+
+        }
+        .door_r {
+            right: 0;
+            border-left: 1px solid blue;
+            transform-origin: right;    /*旋转点  靠右旋转*/
+        }
+        .door:hover .door_l {
+            transform: rotateY(-130deg);    /*y轴旋转*/
+        }
+        .door:hover .door_r {
+            transform: rotateY(130deg);    /*y轴旋转*/
+        }
+    </style>
+</head>
+<body>
+    <div class="door">
+        <div class="door_l"></div>
+        <div class="door_r"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue-2.4.0.js"></script>
+    <script src="https://cdn.bootcss.com/vue-resource/1.5.1/vue-resource.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click='ajx'>点击ajax</button>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            methods: {
+                ajx(){
+                    this.$http.get('textAjax').then(result => {     /* ajax get请求 */
+                        console.log(result.body);   /* textAjax文件里面的内容 */
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+</html>

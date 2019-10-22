@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div:nth-child(1) {
+            width: 0;
+            height: 0;
+            border-width: 0 100px 100px 100px;  /*不定义宽高，只给边框*/
+            border-style: solid;    /*实线*/
+            /*上右左边框设置为透明颜色transparent属性只留下边框就成了一个三角形*/
+            border-color: transparent transparent red transparent;
+        }
+        div:nth-child(2) {
+            width: 0;
+            height: 0;
+            border-width: 0 100px 100px 100px;
+            border-style: solid;
+            border-color: transparent transparent red transparent;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+</body>
+</html>

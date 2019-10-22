@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.min.js"></script>
+    <style>
+        .parent {
+            height: 350px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <div class="parent" @click='div1'>
+            <button @click.stop='btn'>按钮</button>     点击btn也会触发div1事件，事件冒泡, .stop阻止事件冒泡 
+        </div> -->
+
+        <!-- <div class="parent" @click.self='div1'>     .self只有点击自身的时候才会触发事件，阻止当前事件冒泡 
+            <button @click='btn'>按钮</button> 
+        </div> -->
+
+        <!-- <a href="http://www.baidu.com" @click.prevent='link'>百度</a>  阻止默认事件点击后不会跳转百度 -->
+
+        <a href="http://www.baidu.com" @click.prevent.once='link'>百度</a>  <!-- prevent只执行一次.once -->
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            methods: {
+                btn() {
+                    console.log('btn点击了');
+                },
+                div1() {
+                    console.log('div1点击了');
+                },
+                link(){
+                    console.log('a链接被点击了');
+                }
+
+            }
+        })
+    </script>
+</body>
+
+</html>

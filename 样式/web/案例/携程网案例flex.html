@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            max-width: 540px;
+            margin: 0 auto;
+        }
+        div {
+            width: 100%;
+
+        }
+        div img {
+            width: 100%;
+        }
+        nav {
+            width: 516px;
+            height: 197px;
+            border: 1px solid red;
+            border-radius: 8px;
+            display: flex;
+            flex-flow: column;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+        nav div {
+            display: flex;
+            flex: 1;
+            border: 1px solid aqua;
+        }
+        nav div a {
+
+        }
+        nav div a:nth-child(1) {
+            background: #FA6854 url("https://pic.c-ctrip.com/platform/h5/home/grid-nav-items-hotel@v7.15.png") no-repeat right bottom;
+            background-size: 73px auto;
+            flex: 31%;
+        }
+        nav div a:nth-child(2) {
+            flex: 23%;
+            background: #FB7952 url("https://pic.c-ctrip.com/platform/h5/home/grid-nav-items-minsu@v7.15.png") no-repeat left bottom;
+            background-size: 37px auto;
+            margin: 0 1px;
+        }
+        nav div a:nth-child(3) {
+            flex: 46%;
+            background: #FFBE4A url("https://pic.c-ctrip.com/platform/h5/home/grid-nav-items-jhj@v7.15.png") no-repeat right bottom;
+            background-size: 86px auto;
+        }
+        nav div:nth-child(n+2) a:nth-child(3) {
+            flex: 23%;
+        }
+        nav div:nth-child(n+2) a:nth-child(4) {
+            flex: 23%;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <img src="https://pic.c-ctrip.com/platform/h5/home/baodi2@v7.15.jpg" alt="">
+    </div>
+    <nav>
+        <div>
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+        </div>
+        <div>
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+        </div>
+        <div>
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+        </div>
+    </nav>
+</body>
+</html>

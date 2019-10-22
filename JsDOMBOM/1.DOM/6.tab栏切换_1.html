@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+            height: 40px;
+
+        }
+
+        #nav {
+            width: 650px;
+            background-color: aqua;
+            margin: 100px auto;
+        }
+
+        #nav ul li {
+            padding: 0 25px;
+            float: left;
+            line-height: 40px;
+        }
+
+        .li_color {
+            background-color: #E4393C;
+            color: #fff;
+        }
+
+        nav {
+            width: 650px;
+            height: 350px;
+            background-color: pink;
+        }
+
+        nav div {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="nav">
+    <ul>
+        <li class="li_color">商品介绍</li>
+        <li>商品介绍</li>
+        <li>商品介绍</li>
+        <li>商品介绍</li>
+        <li>商品介绍</li>
+
+    </ul>
+    <nav>
+        <div class="tab_con" style="display: block">商品介绍模块</div>
+        <div class="tab_con">商品介绍模块</div>
+        <div class="tab_con">商品介绍模块</div>
+        <div class="tab_con">商品介绍模块</div>
+        <div class="tab_con">商品介绍模块</div>
+    </nav>
+
+
+</div>
+
+<script>
+    var lis = document.querySelectorAll('li');
+    var tabs = document.getElementsByClassName('tab_con');
+
+    for (var i = 0; i < lis.length; i++) {
+        lis[i].setAttribute('index', i);
+        lis[i].onclick = function () {
+
+            for (var i = 0; i < lis.length; i++) {
+                lis[i].className = '';
+            }
+            this.className = 'li_color';
+
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].style.display = 'none'
+            }
+            var index = this.getAttribute('index');
+            tabs[index].style.display = 'block';
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+    <style>
+        .bg {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg">
+        hello world!!
+        {{msg}}
+        {{count}}
+        <input type="button" @click="submit()" value="加1">
+        <a :href="url">百度</a>
+        <div v-html = "temp"></div>
+    </div>
+
+    <script>
+        new Vue ({
+            el: '.bg',
+            data: {
+                msg: 'hello vue!',
+                count: 0,
+                url: 'https://www.baidu.com',
+                temp: '<div>hello hello</div>'
+            },
+            methods: {
+                submit: function(){
+                    this.count ++;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

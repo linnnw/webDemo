@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        id: <input type="text" v-model='id'>
+        name: <input type="text" v-model='name'>
+        <button @click='add'>添加</button>
+        <p v-for='item in listObj' :key='item.id'>  <!-- 为循环加上key辨认每个循环 -->
+            <input type="checkbox">
+            id是{{ item.id }}---name是{{ item.name }}
+        </p>
+
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                listObj: [{
+                    id: 1,
+                    name: '盖伦'
+                }, {
+                    id: 2,
+                    name: '亚索'
+                }, {
+                    id: 3,
+                    name: '卢锡安'
+                }, {
+                    id: 4,
+                    name: '卡尔玛'
+                }],
+                id: '',
+                name: ''
+            },
+            methods: {
+                add() {
+                    this.listObj.unshift({ id: this.id, name: this.name })
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

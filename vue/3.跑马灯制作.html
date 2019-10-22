@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <button @click = 'lang'>浪起来</button>
+    <button @click = 'weisuo'>猥琐</button>
+    <h3>{{ msg }}</h3>
+</div>
+
+
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            msg: '猥琐发育!!别浪~~',
+            Interval: null      /*定时器名称*/
+        },
+        methods: {
+            lang(){
+                if (this.Interval == null){     /*防止重复点击定时器加快动画速度*/
+                    this.Interval = setInterval(() => {
+                        let end = this.msg.substr(0,1); /*得到第一个字符串*/
+                        let start = this.msg.substr(1); /*得到第一位开始的全部字符串*/
+                        this.msg = start + end;
+                    },100)
+                }
+            },
+            weisuo(){
+                clearInterval(this.Interval);
+                this.Interval = null;   /*停止定时器后重新赋值位null，不然无法重新启用定时器*/
+            }
+        }
+    })
+</script>
+</body>
+</html>

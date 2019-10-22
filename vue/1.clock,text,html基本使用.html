@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <div>hello,{{ name }}</div> <!-- 获取name的值前后可以添加字符 -->
+        <div v-text='name'>1231231</div> <!-- v-text获取name的值覆盖里面原有数据 -->
+        <div v-html='msg'>123</div> <!-- v-html可以写入元素覆盖里面原有数据 -->
+    </div>
+    <script>
+
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                name: "abc",
+                msg: '<h1>我是标题</h1>'
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+        }
+        div {
+            width: 500px;
+            height: 350px;
+            margin: 100px auto;
+            position: relative;
+        }
+        ul li {
+            width: 64px;
+            height: 64px;
+            float: left;
+            margin: 11px 9px;
+            background-image: url('../images/pokemon.jpeg');
+            background-position: -4px -7px;     /*100  193  286*/   /*88 172 256 340 424*/
+
+            /*0   7   93        0   4       84
+            1   100             1   172
+            2   193             2   256
+            3   286             3   424*/
+        }
+
+        div span {
+            position: absolute;
+            top: 11px;
+            left: -14px;
+            width: 15px;
+            height: 15px;
+            line-height: 14px;
+            text-align: center;
+            border: 1px solid #ccc;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <span>x</span>
+</div>
+<script>
+    // 点击x图片隐藏
+    var spn = document.querySelector('span');
+    var div = document.querySelector('div');
+    spn.onclick = function () {
+        div.style.display = 'none';
+    }
+
+
+    // 精灵图遍历显示
+    var lis = document.querySelectorAll('li');  /*获取所有li*/
+    var index = 7;
+    var index2 = 4;
+    var num = 0
+    var num1 = 5
+
+    for (var i = 0; i <= 4; i++) {      /*循环行  一共四行循环四次*/
+        if(i != 0) {
+            index += 93;    /*精灵图每行相隔93像素*/
+        }
+        for (var j = num; j <= num1; j++) {     /*循环列 一共6列循环6次 每次都要循环不同列每次加6*/
+            if(j != 0){
+                index2 += 84;       /*精灵图每列相隔84像素*/
+            }
+            if(index2 > 450) {      /*大于450换行重新计算像素 index2重置为4*/
+                index2 = 4;
+            }
+            lis[j].style.backgroundPosition = '-'+index2+'px -'+index+'px';
+        }
+        num += 6;   /*里循环结束加6 下次里循环从6开始*/
+        num1 += 6;  /*里循环结束加6 下次里循环从6开始*/
+    }
+
+
+
+
+</script>
+</body>
+</html>

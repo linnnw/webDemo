@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 180px;
+            margin: 200px auto;
+        }
+
+        div span {
+            width: 50px;
+            height: 50px;
+            background-color: #000;
+            display: inline-block;
+            color: #fff;
+            text-align: center;
+            line-height: 50px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+</div>
+<script>
+    // 商品秒杀倒计时
+    var div = document.querySelector('div');
+    var custom = +new Date('2019-8-18 0:0:0');  /*定义的时间毫秒*/
+    countdown();
+    setInterval(countdown,1000)
+    function countdown() {      /*商品秒杀倒计时*/
+        var now = +new Date();      /*现在的时间毫秒*/
+
+        var distance = (custom - now) / 1000;      /*相差的秒数定义时间减去现在时间毫秒数除以1000等于秒数*/
+
+        var h = parseInt(distance / 60 / 60 % 24);    /*计算时*/
+        h = h < 10 ? '0' + h : h;
+        div.children[0].innerHTML = h;
+        var m = parseInt(distance / 60 % 60);       /*计算分*/
+        m = m < 10 ? '0' + m : m;
+        div.children[1].innerHTML = m;
+        var s = parseInt(distance % 60);       /*计算秒*/
+        s = s < 10 ? '0' + s : s;
+        div.children[2].innerHTML = s;
+    }
+
+</script>
+</body>
+</html>
