@@ -3,7 +3,10 @@
     {{ $store.state.count }}
     <button @click="addition(123)">+</button>
     <button @click="subtraction">-</button>
+    <p>$store.getters.count2 方法</p>
     <h1>{{ $store.getters.count2 }}</h1>
+    <p>$store.getters.count3 方法</p>
+    <h1>{{ $store.getters.count3 }}</h1>
     <Props col="ass"></Props>
 
 
@@ -24,13 +27,14 @@ export default {
   },
   methods: {
     addition(test){
-      this.$store.commit('add',test)  /*test传到store.js的add方法里面*/
+      console.log(test);
+      this.$store.commit('add',test)  /*test传到store.js的add方法里面 .commit触发mutations中的事件*/
     },
     subtraction(){
       this.$store.commit('minus')
     },
     updateInfo(){
-      this.$store.dispatch('aUpdateInfo')
+      this.$store.dispatch('aUpdateInfo') /*Action 通过 store.dispatch 方法触发*/
     }
   }
 };

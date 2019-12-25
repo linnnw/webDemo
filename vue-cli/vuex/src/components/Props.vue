@@ -2,6 +2,10 @@
     <div>
       <p>----------Props---------</p>
       {{ $store.state.count }}
+
+      {{ col }}
+
+      <button @click="mul">-</button>
     </div>
 </template>
 
@@ -10,6 +14,11 @@
       name: "Props",
       props: {
           col: String
+      },
+      methods: {
+        mul () {
+          this.$store.commit('minus')
+        }
       }
     }
 </script>
